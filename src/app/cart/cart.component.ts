@@ -14,30 +14,38 @@ export class CartComponent implements OnInit {
   placeOrder() {
     this.orderService.placeOrder().subscribe(
       (stuff) => {
+        console.log(stuff);
         this.cartService.clearCart().subscribe(
           (stuff) => {
+            console.log(stuff);
             this.router.navigate(['orders']);
           },
           (error) => {
             console.log(error);
+            console.log("Error in ClearCart");
+            this.ngOnInit();
           }
         );
       },
       (error) => {
         console.log(error);
+        console.log("Error in PlaceOrder");
         this.ngOnInit();
-      });
+      }
+    );
   }
 
   addToCart(num: number) {
-    this.cartService.addToCart(num).subscribe((thing) => {
-      console.log(thing);
-      this.ngOnInit();
-    },
-    (error) => {
-      console.log(error);
-      this.ngOnInit();
-    });
+    this.cartService.addToCart(num).subscribe(
+      (thing) => {
+        console.log(thing);
+        this.ngOnInit();
+      },
+      (error) => {
+        console.log(error);
+        this.ngOnInit();
+      }
+    );
   }
 
   constructor(
@@ -55,7 +63,7 @@ export class CartComponent implements OnInit {
       (error: any) => {
         console.log(error);
         localStorage.setItem('tokenValid', 'false');
-        localStorage.setItem('role', 'user')
+        localStorage.setItem('role', 'user');
         this.router.navigate(['login']);
       }
     );
@@ -64,13 +72,15 @@ export class CartComponent implements OnInit {
   data: Product[] | undefined;
 
   removeFromCart(num: number) {
-    this.cartService.removeFromCart(num).subscribe((stuff) => {
-      this.ngOnInit();
-    },
-    (error) => {
-      console.log(error);
-      this.ngOnInit();
-    });
+    this.cartService.removeFromCart(num).subscribe(
+      (stuff) => {
+        this.ngOnInit();
+      },
+      (error) => {
+        console.log(error);
+        this.ngOnInit();
+      }
+    );
   }
 
   addToWishlist(num: number) {

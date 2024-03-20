@@ -1,24 +1,50 @@
-<h1 style="text-align: center; margin-top: 20px;">Cart</h1>
-<div class="card" *ngFor="let product of data;index as i">
-  <div class="card-body">
-    <img src="{{product.imageUrl}}" alt="img" width="200" height="200">
-    <h5 class="card-title">{{product.name}}</h5>
-    <h6 class="card-title">{{product.category}}</h6>
-    <p class="card-text">
-        {{product.description}}
-    </p>
-    <p class="card-text">
-        Quantity: {{product.quantity}}
-    </p>
-    <p class="card-text">{{product.price*product.quantity| currency:'USD':true: '1.2-2'}}</p>
-    <span style="display: inline;">
-        <button type="button" (click)="addToCart(product.id)" class="btn btn-primary">Add Another To Cart</button> 
-        <button type="button" (click)="removeFromCart(product.id)" class="btn btn-primary">Remove From Cart</button>  
-        <button type="button" (click)="addToWishlist(product.id)" class="btn btn-primary">Add To Wishlist</button>  
-    </span>
-
-  </div>
-</div>
+<h1 style="text-align: center; margin-top: 20px">Cart</h1>
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of data; index as i">
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>
+        <span style="display: inline">
+          <button
+            type="button"
+            (click)="addToCart(product.id)"
+            class="btn btn-primary"
+          >
+            Add Another To Cart
+          </button>
+          <button
+            type="button"
+            (click)="removeFromCart(product.id)"
+            class="btn btn-primary"
+          >
+            Remove From Cart
+          </button>
+          <button
+            type="button"
+            (click)="addToWishlist(product.id)"
+            class="btn btn-primary"
+          >
+            Add To Wishlist
+          </button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <div id="order">
-    <button type="button" (click)="placeOrder()" class="btn btn-primary">Place Order</button> 
+  <button type="button" (click)="placeOrder()" class="btn btn-primary">
+    Place Order
+  </button>
 </div>

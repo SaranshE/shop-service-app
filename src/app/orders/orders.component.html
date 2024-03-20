@@ -1,11 +1,11 @@
 <h1 style="text-align: center; margin-top: 20px">Orders</h1>
-<div class="card" *ngFor="let product of data; index as i">
+<div class="card" *ngFor="let order of data; index as i">
     <div class="card-body">
-      <h5 class="card-title">{{ product.userId }}</h5>
-      <p class="card-title" [innerHTML]="product.products"></p>
-      <p class="card-text">Total: ${{ product.total }}</p>
+      <h5 class="card-title">Order Id: {{ order.id }}</h5>
+      <p class="card-title" [innerHTML]="order.products"></p>
+      <p class="card-text">Total: ${{ order.total }}</p>
       <p class="card-text">
-        {{ product.shippingDetails }}
+        {{ order.shippingDetails }}
       </p>
     </div>
   </div>
