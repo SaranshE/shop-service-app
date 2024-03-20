@@ -34,7 +34,7 @@ export class WishlistService {
   addToWishlist(num: number)
   {
     const params = new HttpParams().append('productId', num);
-    return this.http.post<any>(this.wishlistUrl + "/" + num, null, {headers: this.getHeader(), params: params})
+    return this.http.post<any>(this.wishlistUrl + "/" + localStorage.getItem('userId'), null, {headers: this.getHeader(), params: params})
   }
 
 
