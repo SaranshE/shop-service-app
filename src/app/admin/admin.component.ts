@@ -71,6 +71,7 @@ export class AdminComponent implements OnInit {
     description: '',
     price: 0,
     category: '',
+    imageUrl:''
   });
   productToEdit: Product = {
     id: 0,
