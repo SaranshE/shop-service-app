@@ -56,6 +56,19 @@
         <label mdbLabel class="form-label" for="form2Example4">Category</label>
       </mdb-form-control>
 
+      <!-- Image input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          formControlName="imageUrl"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example4">Image Url</label>
+      </mdb-form-control>
+
       <!-- Submit button -->
       <button mdbRipple type="submit" class="btn btn-primary btn-block">
         Add Product
@@ -167,6 +180,20 @@
         <label mdbLabel class="form-label" for="form2Example4">Category</label>
       </mdb-form-control>
 
+      <!-- Image Url input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          [(ngModel)]="productToEdit.imageUrl"
+          name="image"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example4">Image Url</label>
+      </mdb-form-control>
+
       <!-- Submit button -->
       <button mdbRipple type="submit" class="btn btn-primary btn-block">
         Save Product
@@ -177,7 +204,7 @@
   <mdb-tab title="Users"
     ><div class="card" *ngFor="let user of userData; index as i">
       <div class="card-body">
-        <h4 class="card-title">ID: {{user.id}}</h4>
+        <h4 class="card-title">ID: {{ user.id }}</h4>
         <h5 class="card-title">
           {{ user.name.firstName }} {{ user.name.lastName }}
         </h5>
@@ -274,9 +301,7 @@
           name="lastName"
           required
         />
-        <label mdbLabel class="form-label" for="form2Example1"
-          >Last Name</label
-        >
+        <label mdbLabel class="form-label" for="form2Example1">Last Name</label>
       </mdb-form-control>
 
       <!-- Email input-->
@@ -360,9 +385,10 @@
           name="phoneNumber"
           required
         />
-        <label mdbLabel class="form-label" for="form2Example1">Phone Number</label>
+        <label mdbLabel class="form-label" for="form2Example1"
+          >Phone Number</label
+        >
       </mdb-form-control>
-
 
       <!-- Role -->
       <mdb-form-control class="mb-4">

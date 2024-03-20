@@ -79,6 +79,7 @@ export class AdminComponent implements OnInit {
     price: 0,
     category: '',
     quantity: 0,
+    imageUrl: ''
   };
   userForm = this.formBuilder.group({
     name: {
