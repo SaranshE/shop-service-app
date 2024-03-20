@@ -1,0 +1,68 @@
+<h1 style="text-align: center; margin-top: 20px">Products</h1>
+
+<mdb-tabs [pills]="true" [justified]="true">
+  <mdb-tab title="All">
+    <div>
+      <div class="card" *ngFor="let product of data; index as i">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <h6 class="card-title">{{ product.category }}</h6>
+          <p class="card-text">
+            {{ product.description }}
+          </p>
+          <p class="card-text">${{ product.price }}</p>
+          <span style="display: inline" *ngIf="linksEnabled">
+            <button
+              type="button"
+              (click)="addToCart(product.id)"
+              class="btn btn-primary"
+            >
+              Add to Cart
+            </button>
+            <button
+              type="button"
+              (click)="addToWishlist(product.id)"
+              class="btn btn-primary"
+            >
+              Add to Wishlist
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </mdb-tab>
+
+  <mdb-tab
+    *ngFor="let category of categories; index as j"
+    title="{{ category }}"
+  >
+    <ng-container *ngFor="let product of data; index as i">
+      <div class="card" *ngIf="product.category === category">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <h6 class="card-title">{{ product.category }}</h6>
+          <p class="card-text">
+            {{ product.description }}
+          </p>
+          <p class="card-text">${{ product.price }}</p>
+          <span style="display: inline" *ngIf="linksEnabled">
+            <button
+              type="button"
+              (click)="addToCart(product.id)"
+              class="btn btn-primary"
+            >
+              Add to Cart
+            </button>
+            <button
+              type="button"
+              (click)="addToWishlist(product.id)"
+              class="btn btn-primary"
+            >
+              Add to Wishlist
+            </button>
+          </span>
+        </div>
+      </div>
+    </ng-container>
+  </mdb-tab>
+</mdb-tabs>

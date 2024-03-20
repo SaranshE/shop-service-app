@@ -1,0 +1,76 @@
+<h1 style="text-align: center; margin-top: 20px;">Register</h1>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- First Name input-->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example3" class="form-control" formControlName="firstName" required/>
+    <label mdbLabel class="form-label" for="form1Example3">First Name</label>
+  </mdb-form-control>
+
+  <!-- Middle Name input-->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example4" class="form-control" formControlName="middleName"/>
+    <label mdbLabel class="form-label" for="form1Example4">Middle Name</label>
+  </mdb-form-control>
+
+  <!-- Last Name input-->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example5" class="form-control" formControlName="lastName" required/>
+    <label mdbLabel class="form-label" for="form1Example5">Last Name</label>
+  </mdb-form-control>
+
+  <!-- Email input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="email" id="form1Example1" class="form-control" formControlName="email" required/>
+    <label mdbLabel class="form-label" for="form1Example1">Email address</label>
+  </mdb-form-control>
+
+  <!-- Password input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="password" id="form1Example2" class="form-control" formControlName="pass" required/>
+    <label mdbLabel class="form-label" for="form1Example2">Password</label>
+  </mdb-form-control>
+
+  <!-- Phone Number input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="tel" id="form1Example6" class="form-control" formControlName="phoneNumber" required/>
+    <label mdbLabel class="form-label" for="form1Example6">Phone Number</label>
+  </mdb-form-control>
+
+  <!-- House Number input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="number" id="form1Example10" class="form-control" formControlName="houseNumber" required/>
+    <label mdbLabel class="form-label" for="form1Example10">House Number</label>
+  </mdb-form-control>
+
+  <!-- Street input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example7" class="form-control" formControlName="street" required/>
+    <label mdbLabel class="form-label" for="form1Example7">Street</label>
+  </mdb-form-control>
+
+  <!-- City input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example8" class="form-control" formControlName="city" required/>
+    <label mdbLabel class="form-label" for="form1Example8">City</label>
+  </mdb-form-control>
+
+  <!-- Zipcode input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form1Example9" class="form-control" formControlName="zipcode" required/>
+    <label mdbLabel class="form-label" for="form1Example9">Zipcode</label>
+  </mdb-form-control>
+
+  <!-- Role input -->
+  <div class="selectdiv">
+    <label>Select Role</label>
+    <select name="roles" id="roles" formControlName="role">
+      <option value="USER">USER</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+  </div>
+
+  <!-- Submit button -->
+  <button mdbRipple type="submit" class="btn btn-primary btn-block">
+    Register
+  </button>
+</form>

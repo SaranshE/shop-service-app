@@ -1,0 +1,387 @@
+<h1 style="text-align: center; margin-top: 20px">Admin Dashboard</h1>
+
+<mdb-tabs [pills]="true" [justified]="true">
+  <mdb-tab title="Products">
+    <h3 style="padding: 10px; margin: 20px">Add New Product</h3>
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <!-- Name input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          formControlName="name"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Name</label>
+      </mdb-form-control>
+
+      <!-- Description input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          formControlName="description"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example2"
+          >Description</label
+        >
+      </mdb-form-control>
+      <!-- Price input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="number"
+          id="form1Example4"
+          class="form-control"
+          formControlName="price"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example3">Price</label>
+      </mdb-form-control>
+      <!-- Category input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          formControlName="category"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example4">Category</label>
+      </mdb-form-control>
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block">
+        Add Product
+      </button>
+    </form>
+
+    <h3 style="padding: 10px; margin: 20px">Products</h3>
+
+    <div class="card" *ngFor="let product of productData; index as i">
+      <div class="card-body">
+        <h4 class="card-title">Id: {{ product.id }}</h4>
+        <h5 class="card-title">{{ product.name }}</h5>
+        <h6 class="card-title">{{ product.category }}</h6>
+        <p class="card-text">
+          {{ product.description }}
+        </p>
+        <p class="card-text">${{ product.price }}</p>
+        <span style="display: inline">
+          <button
+            type="button"
+            (click)="editProductClick(product)"
+            class="btn btn-primary"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            (click)="delete(product.id)"
+            class="btn btn-primary"
+          >
+            Delete
+          </button>
+        </span>
+      </div>
+    </div>
+    <form (ngSubmit)="editProduct()" *ngIf="edit">
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="productToEdit.id"
+          name="id"
+          readonly="true"
+        />
+        <label
+          mdbLabel
+          class="form-label"
+          for="form2Example1"
+          value="productEditForm.value.id"
+          >id</label
+        >
+      </mdb-form-control>
+
+      <!-- Name input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="productToEdit.name"
+          name="name"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Name</label>
+      </mdb-form-control>
+
+      <!-- Description input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          [(ngModel)]="productToEdit.description"
+          name="description"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example2"
+          >Description</label
+        >
+      </mdb-form-control>
+      <!-- Price input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="number"
+          id="form1Example4"
+          class="form-control"
+          [(ngModel)]="productToEdit.price"
+          name="price"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example3">Price</label>
+      </mdb-form-control>
+      <!-- Category input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example4"
+          class="form-control"
+          [(ngModel)]="productToEdit.category"
+          name="category"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example4">Category</label>
+      </mdb-form-control>
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block">
+        Save Product
+      </button>
+    </form>
+  </mdb-tab>
+
+  <mdb-tab title="Users"
+    ><div class="card" *ngFor="let user of userData; index as i">
+      <div class="card-body">
+        <h4 class="card-title">ID: {{user.id}}</h4>
+        <h5 class="card-title">
+          {{ user.name.firstName }} {{ user.name.lastName }}
+        </h5>
+        <h6 class="card-title">
+          {{ user.address.number }} {{ user.address.street }},
+          {{ user.address.city }}, {{ user.address.zipcode }}
+        </h6>
+        <p class="card-text">
+          {{ user.phoneNumber }}
+        </p>
+        <p class="card-text">
+          {{ user.email }}
+        </p>
+        <p class="card-text">{{ user.role }}</p>
+        <span style="display: inline">
+          <button
+            type="button"
+            (click)="editUserClick(user)"
+            class="btn btn-primary"
+          >
+            Edit User Details
+          </button>
+          <button
+            type="button"
+            (click)="deleteUser(user.id)"
+            class="btn btn-primary"
+          >
+            Delete
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <form (ngSubmit)="editUser()" *ngIf="editUserBool">
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.id"
+          name="userId"
+          readonly="true"
+        />
+        <label
+          mdbLabel
+          class="form-label"
+          for="form2Example1"
+          value="productEditForm.value.id"
+          >id</label
+        >
+      </mdb-form-control>
+
+      <!-- First Name input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.name.firstName"
+          name="firstName"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1"
+          >First Name</label
+        >
+      </mdb-form-control>
+
+      <!-- Middle Name input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.name.middleName"
+          name="middleName"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1"
+          >Middle Name</label
+        >
+      </mdb-form-control>
+
+      <!-- Last Name input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.name.lastName"
+          name="lastName"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1"
+          >Last Name</label
+        >
+      </mdb-form-control>
+
+      <!-- Email input-->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.email"
+          name="email"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Email</label>
+      </mdb-form-control>
+
+      <!-- Street Number -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.address.number"
+          name="addressNumber"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Number</label>
+      </mdb-form-control>
+
+      <!-- Street -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.address.street"
+          name="street"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Street</label>
+      </mdb-form-control>
+
+      <!-- City -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.address.city"
+          name="middleName"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">City</label>
+      </mdb-form-control>
+
+      <!-- Zipcode -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.address.zipcode"
+          name="zipcode"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Zipcode</label>
+      </mdb-form-control>
+
+      <!-- Phone Number -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.phoneNumber"
+          name="phoneNumber"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Phone Number</label>
+      </mdb-form-control>
+
+
+      <!-- Role -->
+      <mdb-form-control class="mb-4">
+        <input
+          mdbInput
+          type="text"
+          id="form1Example3"
+          class="form-control"
+          [(ngModel)]="userToEdit.role"
+          name="role"
+          required
+        />
+        <label mdbLabel class="form-label" for="form2Example1">Role</label>
+      </mdb-form-control>
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block">
+        Save Product
+      </button>
+    </form>
+  </mdb-tab>
+</mdb-tabs>

@@ -1,0 +1,20 @@
+<h1 style="text-align: center; margin-top: 20px;">Login</h1>
+
+<form [formGroup]= "loginForm"  (ngSubmit)="onSubmit()">
+  <!-- Email input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="email" id="email" class="form-control" formControlName="email" required/>
+    <label mdbLabel class="form-label" for="email">Email address</label>
+  </mdb-form-control>
+
+  <!-- Password input -->
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="password" id="password" class="form-control" formControlName="password" required/>
+    <label mdbLabel class="form-label" for="password">Password</label>
+  </mdb-form-control>
+
+  <!-- Submit button -->
+  <button mdbRipple type="submit" class="btn btn-primary btn-block">
+    Sign in
+  </button>
+</form>
