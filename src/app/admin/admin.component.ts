@@ -126,6 +126,7 @@ export class AdminComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.productForm.reset();
     this.editUserBool = false;
     this.edit = false;
     this.adminService.getUsers().subscribe(

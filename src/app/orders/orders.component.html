@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title">Order Id: {{ order.id }}</h5>
       <p class="card-title" [innerHTML]="order.products"></p>
-      <p class="card-text">Total: ${{ order.total }}</p>
+      <p class="card-text"><b>Total: ${{ order.total }}</b></p>
       <p class="card-text">
         {{ order.shippingDetails }}
       </p>

@@ -9,39 +9,43 @@ import { OrdersComponent } from './orders/orders.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-
   {
-    path:"home",
-    component:HomeComponent
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
-    path:"login",
-    component:LoginComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path:"register",
-    component:RegisterComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:"cart",
-    component:CartComponent
+    path: 'register',
+    component: RegisterComponent,
   },
   {
-    path:"wishlist",
-    component:WishlistComponent
+    path: 'cart',
+    component: CartComponent,
   },
   {
-    path:"orders",
-    component:OrdersComponent
+    path: 'wishlist',
+    component: WishlistComponent,
   },
   {
-    path: "admin",
-    component:AdminComponent
-  }
+    path: 'orders',
+    component: OrdersComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
