@@ -59,6 +59,10 @@ export class CartComponent implements OnInit {
       (products) => {
         console.log(products);
         this.data = products;
+        for(var val of this.data || [])
+        {
+          this.total = this.total + (val.price * val.quantity);
+        }
       },
       (error: any) => {
         console.log(error);
@@ -70,7 +74,7 @@ export class CartComponent implements OnInit {
   }
 
   data: Product[] | undefined;
-
+  total: number = 0;
   removeFromCart(num: number) {
     this.cartService.removeFromCart(num).subscribe(
       (stuff) => {

@@ -6,6 +6,7 @@
       <th>Category</th>
       <th>Description</th>
       <th>Quantity</th>
+      <th>Subtotal</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <td>{{ product.category }}</td>
       <td>{{ product.description }}</td>
       <td>{{ product.quantity }}</td>
+      <td>${{product.price * product.quantity }}</td>
       <td>
         <span style="display: inline">
           <button
@@ -43,6 +45,7 @@
     </tr>
   </tbody>
 </table>
+<h3 style="text-align: center; margin-top: 20px">Total: {{total}}</h3>
 <div id="order">
   <button type="button" (click)="placeOrder()" class="btn btn-primary">
     Place Order
